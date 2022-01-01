@@ -1,3 +1,8 @@
 # GoodDrinks
 
-GoodDrinks ist eine App, die zum Kalkulieren von Pfand bei einer Inventur benutzt wird. Sie wird über mehrer Funktionen verfügen, die es einem vereinfachen das Leergut zu berechnen um das Ergebnis anschließend in den MDE-Geräten wieder zu benutzen.
+App Deployment Details
+
+----
+
+Python = 3.9.0
+Flask = 2.0.2
