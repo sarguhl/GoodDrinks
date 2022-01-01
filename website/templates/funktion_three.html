@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Fnk 3{% endblock %}
+{% block content %}
+<h1 align="center">Funktion 3</h1>
+
+
+<form method="POST">
+
+    <div align="center">
+        <div class="wrapper">
+            <div class="form__group">
+                <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Zahl Höhe"></input>
+
+                <i class="material-icons">add</i>
+
+
+                <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Zahl Breite"></input>
+
+                <i class="material-icons">add</i>
+
+
+                <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Zahl Tiefe"></input>
+
+                <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Waren Preis" min="0" step=".01"></input>
+
+            </div>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+
+        <p class="output_text">{{ ergebnis }}</p>
+    </div>
+
+
+</form>
+{% endblock %}
