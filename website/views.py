@@ -26,6 +26,7 @@ def leergut_berechnung():
 
 def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
     try:
+        print("foo 2")
         if ware_preis is  0:
             ergebnis = int(breite)*int(hoehe)*int(tiefe) + int(lose)
             output_text = str(ergebnis)
