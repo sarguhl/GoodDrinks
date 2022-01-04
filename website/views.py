@@ -22,15 +22,15 @@ def step_calculator(zahl, ware_preis, letzte_preis):
 def leergut_berechnung():
     pass
 
-def volumen_berechnung(breite, höhe, tiefe, lose, ware_preis):
+def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
     try:
         if ware_preis is  0:
-            output_text = f"{int(breite)*int(höhe)*int(tiefe) + int(lose)} Gegenstände"
+            output_text = f"{int(breite)*int(hoehe)*int(tiefe) + int(lose)} Gegenstände"
             return output_text
 
         else:
-            ergebnis = int(breite) * int(höhe) * int(tiefe) * float(ware_preis) + int(lose)
-            output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(höhe)*int(tiefe)} Gegenstände"
+            ergebnis = int(breite) * int(hoehe) * int(tiefe) * float(ware_preis) + int(lose)
+            output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(hoehe)*int(tiefe)} Gegenstände"
             return output_text
     except ValueError:
         output_text = ""
@@ -51,7 +51,7 @@ def funktion_one():
     
     if request.method == "POST":
         breite = request.form.get("zahl1")
-        höhe = request.form.get("zahl2")
+        hoehe = request.form.get("zahl2")
         tiefe = request.form.get("zahl3")
 
         if breite == None:
@@ -59,10 +59,10 @@ def funktion_one():
         elif breite == "":
             breite = 0
 
-        if höhe == None:
-            höhe = 0
-        elif höhe == "":
-            höhe = 0
+        if hoehe == None:
+            hoehe = 0
+        elif hoehe == "":
+            hoehe = 0
 
         if tiefe == None:
             tiefe = 0
@@ -70,7 +70,7 @@ def funktion_one():
             tiefe = 0
 
         try:
-            ergebnis = int(breite) * kasten + int(höhe) * flaschen + int(tiefe) * bier_flaschen
+            ergebnis = int(breite) * kasten + int(hoehe) * flaschen + int(tiefe) * bier_flaschen
             if ergebnis == 0:
                 output_text = "Es wurden keine Zahlen eingegeben."
             # Print to the Screen
@@ -118,7 +118,7 @@ def funktion_three():
     
     if request.method == "POST":
         breite = request.form.get("zahl1")
-        höhe = request.form.get("zahl2")
+        hoehe = request.form.get("zahl2")
         tiefe = request.form.get("zahl3")
         lose = request.form.get("zahl4")
         ware_preis = request.form.get("ware_preis")
@@ -133,10 +133,10 @@ def funktion_three():
         elif breite == "":
             breite = 0
 
-        if höhe == None:
-            höhe = 0
-        elif höhe == "":
-            höhe = 0
+        if hoehe == None:
+            hoehe = 0
+        elif hoehe == "":
+            hoehe = 0
 
         if tiefe == None:
             tiefe = 0
@@ -148,7 +148,7 @@ def funktion_three():
         elif lose == "":
             lose = 0
         
-        output_text = volumen_berechnung(breite, höhe, tiefe, lose, ware_preis)
+        output_text = volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis)
 
     return render_template("funktion_three.html", ergebnis=output_text)
 
