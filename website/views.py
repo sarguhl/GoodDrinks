@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import re
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 import json
