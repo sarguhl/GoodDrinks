@@ -22,14 +22,14 @@ def step_calculator(zahl, ware_preis, letzte_preis):
 def leergut_berechnung():
     pass
 
-def volumen_berechnung(breite, höhe, tiefe, ware_preis):
+def volumen_berechnung(breite, höhe, tiefe, lose, ware_preis):
     try:
         if ware_preis is  0:
-            output_text = f"{int(breite)*int(höhe)*int(tiefe)} Gegenstände"
+            output_text = f"{int(breite)*int(höhe)*int(tiefe) + int(lose)} Gegenstände"
             return output_text
 
         else:
-            ergebnis = int(breite) * int(höhe) * int(tiefe) * float(ware_preis)
+            ergebnis = int(breite) * int(höhe) * int(tiefe) * float(ware_preis) + int(lose)
             output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(höhe)*int(tiefe)} Gegenstände"
             return output_text
     except ValueError:
@@ -120,6 +120,7 @@ def funktion_three():
         breite = request.form.get("zahl1")
         höhe = request.form.get("zahl2")
         tiefe = request.form.get("zahl3")
+        lose = request.form.get("zahl4")
         ware_preis = request.form.get("ware_preis")
 
         if ware_preis == None:
@@ -142,7 +143,12 @@ def funktion_three():
         elif tiefe == "":
             tiefe = 0
         
-        output_text = volumen_berechnung(breite, höhe, tiefe, ware_preis)
+        if lose == None:
+            lose = 0
+        elif lose == "":
+            lose = 0
+        
+        output_text = volumen_berechnung(breite, höhe, tiefe, lose, ware_preis)
 
     return render_template("funktion_three.html", ergebnis=output_text)
 
