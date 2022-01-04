@@ -4,6 +4,7 @@
     margin: 0;
     background-color: #F5F5FA;
     box-sizing: border-box;
+    line-break: auto;
 }
 
 html {
@@ -111,6 +112,7 @@ nav li a:hover {
 h1 {
     margin-top: 30px;
     font-family: 'Montserrat', sans-serif;
+    font-size: large;
 }
 
 .home-h1 {
@@ -136,7 +138,7 @@ h1 {
     display: block;
     border-bottom: 0.3rem solid transparent;
     transition: all 0.3s;
-    max-width: 15em;
+    max-width: 17em;
     max-height: 7em;
 
     resize: none;
@@ -181,8 +183,11 @@ h1 {
 }
 
 .output_text {
+    margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 90%;
 }
 
 .func-button {
@@ -199,3 +204,39 @@ i {
     background: none;
     font-size: 25px;
 }
+
+#btn-menu-mail {
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #0077FF;
+    border: none;
+    padding: 2rem;
+    color: white;
+    margin: 1.5rem;
+    border-radius: 3px;
+    text-decoration: none; 
+    font-size: 1.5rem;
+}
+
+#btn-menu-mail:hover{
+    background-color: #ffffff;
+    color: #0077FF;}
+
+#btn-menu-os {
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #FF6600;
+    border: none;
+    padding: 2rem;
+    color: white;
+    margin: 1.5rem;
+    border-radius: 3px;
+    text-decoration: none; 
+    font-size: 1.5rem;
+}
+
+#btn-menu-os:hover{
+    background-color: #ffffff;
+    color: #FF6600;}

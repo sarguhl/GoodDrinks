@@ -19,6 +19,23 @@ def step_calculator(zahl, ware_preis, letzte_preis):
         output_text = letzte_preis
         return output_text
 
+def leergut_berechnung():
+    pass
+
+def volumen_berechnung(breite, höhe, tiefe, ware_preis):
+    try:
+        if ware_preis is  0:
+            output_text = f"{int(breite)*int(höhe)*int(tiefe)} Gegenstände"
+            return output_text
+
+        else:
+            ergebnis = int(breite) * int(höhe) * int(tiefe) * float(ware_preis)
+            output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(höhe)*int(tiefe)} Gegenstände"
+            return output_text
+    except ValueError:
+        output_text = ""
+        return output_text
+
 
 @views.route("/", methods=["GET"])
 def home():
@@ -105,6 +122,11 @@ def funktion_three():
         tiefe = request.form.get("zahl3")
         ware_preis = request.form.get("ware_preis")
 
+        if ware_preis == None:
+            ware_preis = 0
+        elif ware_preis == "":
+            ware_preis = 0
+
         if breite == None:
             breite = 0
         elif breite == "":
@@ -119,15 +141,11 @@ def funktion_three():
             tiefe = 0
         elif tiefe == "":
             tiefe = 0
-
-        try:
-            ergebnis = int(breite) * int(höhe) * int(tiefe) * float(ware_preis)
-            if ergebnis == 0:
-                output_text = "Es wurden keine Zahlen eingegeben."
-            # Print to the Screen
-            else:
-                output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(höhe)*int(tiefe)} Gegenstände"
-        except ValueError:
-            output_text = ""
+        
+        output_text = volumen_berechnung(breite, höhe, tiefe, ware_preis)
 
     return render_template("funktion_three.html", ergebnis=output_text)
+
+@views.route("/hilfe", methods=["GET"])
+def hilfe():
+    return render_template("help.html")
