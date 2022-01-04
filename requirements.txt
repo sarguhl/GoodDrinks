@@ -1,4 +1,0 @@
-Flask==2.0.2
-Pillow==8.4.0
-requests==2.26.0
-virtualenv==20.11.2
