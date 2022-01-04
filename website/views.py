@@ -25,12 +25,12 @@ def leergut_berechnung():
 def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
     try:
         if ware_preis is  0:
-            output_text = f"{int(breite)*int(hoehe)*int(tiefe) + int(lose)} Gegenstände"
+            output_text = f"{int(breite)*int(hoehe)*int(tiefe) + int(lose)} Waren"
             return output_text
 
         else:
             ergebnis = int(breite) * int(hoehe) * int(tiefe) * float(ware_preis) + int(lose)
-            output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(hoehe)*int(tiefe)} Gegenstände"
+            output_text = f"{round(ergebnis, 2)}€ | {int(breite)*int(hoehe)*int(tiefe)} Waren"
             return output_text
     except ValueError:
         output_text = ""
@@ -155,3 +155,7 @@ def funktion_three():
 @views.route("/hilfe", methods=["GET"])
 def hilfe():
     return render_template("help.html")
+
+@views.route("/impressum", methods=["GET"])
+def impressum():
+    return render_template("impressum.html")
