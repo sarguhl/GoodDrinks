@@ -9,4 +9,6 @@ RUN pip install Flask Pillow requests
 
 COPY . /app
 
+WORKDIR /app
+
 CMD [ "python", "./app.py" ]
