@@ -5,7 +5,7 @@ LABEL maintainer="Emil Pehlivan <pehlivanemil@gmail.com>"
 
 RUN apt-get update -y && apt-get install -y python-pip python-dev
 
-RUN pip install Flask Pillow requests
+RUN pip install Flask Pillow requests flask_sqlalchemy
 
 COPY . /app
 
