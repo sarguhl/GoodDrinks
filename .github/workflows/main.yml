@@ -30,3 +30,7 @@ jobs:
         with:
           push: true
           tags: sarguhl/gooddrinks:latest
+
+      - 
+        name: Portainer Webhook - Update Service
+        run: curl --request POST ${{ secrets.PORTAINER_WEBHOOK }}
