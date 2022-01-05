@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 
 def create_app():
-    print("foo 1")
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "flkjFSA23F!s32wdfg32"
     
