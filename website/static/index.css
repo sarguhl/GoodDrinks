@@ -48,7 +48,6 @@ nav li a {
     background-color: black;
 }
   
-/* Change the link color to #111 (black) on hover */
 nav li a:hover {
     background-color: #0077FF;
 }
@@ -92,7 +91,6 @@ nav li a:hover {
     color: white;
 }
 
-
 .btn {
     background-color: #0077FF; /* Blue background */
     border: none; /* Remove borders */
@@ -103,11 +101,9 @@ nav li a:hover {
     margin-top: 10px;
 }
   
-/* Darker background on mouse-over */
 .btn:hover {
     background-color: RoyalBlue;
 }
-
 
 h1 {
     margin-top: 30px;
@@ -115,8 +111,6 @@ h1 {
     font-size: large;
     margin-bottom: 10px;
 }
-
-
 
 .form__input {
     color: #333;
@@ -217,7 +211,8 @@ i {
 
 #btn-menu-mail:hover{
     background-color: #ffffff;
-    color: #0077FF;}
+    color: #0077FF;
+}
 
 #btn-menu-os {
     text-align: center;

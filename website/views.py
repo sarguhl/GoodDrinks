@@ -40,7 +40,6 @@ def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
         output_text = ""
         return output_text
 
-
 @views.route("/", methods=["GET"])
 def home():
     return render_template("home.html")
