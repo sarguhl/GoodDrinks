@@ -1,9 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
-import re
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 import json
-import random
+import glob
+
+glob.funktion_two_value = 0
+
+from flask import (Blueprint, flash, jsonify, redirect, render_template,
+                   request, url_for)
+from flask_login import current_user, login_required, login_user, logout_user
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from . import db
+from .models import Note, User
 
 views = Blueprint('views', __name__)
 
@@ -22,7 +30,6 @@ def leergut_berechnung():
 
 def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
     try:
-        print("foo 2")
         if ware_preis is  0:
             ergebnis = int(breite)*int(hoehe)*int(tiefe) + int(lose)
             output_text = str(ergebnis)
@@ -38,7 +45,7 @@ def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
 
 @views.route("/", methods=["GET"])
 def home():
-    return render_template("home.html")
+    return render_template("home.html",  user=current_user)
 
 @views.route("/funktion-eins", methods=["GET","POST"])
 def funktion_one():
@@ -101,8 +108,6 @@ def funktion_two():
         
         elif request.form.get('submit_button', False) == "clear":
             ware_preis = 0
-
-
     return render_template("funktion_two.html", ergebnis=ware_preis, ware_preis=ware_preis)
 
 @views.route("/funktion-drei", methods=["GET","POST"])
