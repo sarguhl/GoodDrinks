@@ -21,8 +21,7 @@ def step_calculator(zahl, ware_preis):
         if ergebnis == 0:
             return ergebnis
         else:
-            output_text = round(ergebnis, 2)
-            return output_text
+            return ergebnis
     except ValueError:
         return ergebnis
 
@@ -90,8 +89,6 @@ def funktion_one():
 
 @views.route("/funktion-zwei", methods=["GET","POST"])
 def funktion_two():
-    letzte_preis = 0
-    output_text = 0
     ware_preis = 0
 
     if request.method == "POST":
@@ -111,9 +108,6 @@ def funktion_two():
         
         elif request.form.get('submit_button', False) == "clear":
             ware_preis = 0
-            output_text = 0
-            
-
     return render_template("funktion_two.html", ergebnis=ware_preis, ware_preis=ware_preis)
 
 @views.route("/funktion-drei", methods=["GET","POST"])
