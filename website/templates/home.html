@@ -4,14 +4,9 @@
 <h1 align="center">Home</h1>
 <div class="home-wrapper">
     <div class="menu">
-        {% if user.is_authenticated %}
         <a class="btn-menu" href="/funktion-eins">Funktion Eins</a>
         <a class="btn-menu" href="/funktion-zwei">Funktion Zwei</a>
         <a class="btn-menu" href="/funktion-drei">Funktion Drei</a>
-        <a class="btn-menu" id="logout" href="/logout">Logout</a>
-        {% else %}
-        <a class="btn-menu" href="/login" id="login">Login</a>
-        {% endif %}
         <a class="btn-menu" href="/hilfe">Hilfe/Über</a>
     </div>
 </div>
