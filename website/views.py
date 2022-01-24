@@ -7,18 +7,15 @@ import random
 
 views = Blueprint('views', __name__)
 
-def step_calculator(zahl, ware_preis, letzte_preis):
-    output_text = 0
+def step_calculator(zahl, ware_preis):
     try:
-        ergebnis = zahl * float(ware_preis)
+        ergebnis = zahl + int(ware_preis)
         if ergebnis == 0:
-            output_text = letzte_preis
-            return output_text
+            return ergebnis
         else:
             return ergebnis
     except ValueError:
-        output_text = letzte_preis
-        return output_text
+        return ergebnis
 
 def leergut_berechnung():
     pass
@@ -91,22 +88,20 @@ def funktion_two():
         ware_preis = request.form.get("ware_preis")
 
         if request.form.get('submit_button', False) == 'x1':
-            output_text = step_calculator(1,ware_preis, letzte_preis)
+            ware_preis = step_calculator(1,ware_preis)
 
         elif request.form.get('submit_button', False) == 'x2':
-            output_text = step_calculator(2,ware_preis, letzte_preis)
-
-        elif request.form.get('submit_button', False) == 'x3':
-            output_text = step_calculator(3,ware_preis, letzte_preis)
+            ware_preis = step_calculator(2,ware_preis)
 
         elif request.form.get('submit_button', False) == 'x5':
-            output_text = step_calculator(5,ware_preis, letzte_preis)
+            ware_preis = step_calculator(5,ware_preis)
 
         elif request.form.get('submit_button', False) == 'x10':
-            output_text = step_calculator(10,ware_preis, letzte_preis)
+            ware_preis = step_calculator(10,ware_preis)
         
         elif request.form.get('submit_button', False) == "clear":
             ware_preis = 0
+
 
     return render_template("funktion_two.html", ergebnis=ware_preis, ware_preis=ware_preis)
 
