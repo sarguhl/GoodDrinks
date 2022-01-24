@@ -4,7 +4,7 @@ LABEL maintainer="Emil Pehlivan <pehlivanemil@gmail.com>"
 
 RUN apt-get update -y && apt-get install -y python3-pip python3-dev
 
-RUN pip install Flask Pillow requests flask_sqlalchemy flask_login werkzeug flask_admin flask_turbo
+RUN pip install Flask Pillow requests flask_sqlalchemy
 
 COPY . /app
 

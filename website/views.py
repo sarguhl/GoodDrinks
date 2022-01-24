@@ -1,36 +1,32 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
+import re
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 import json
-import glob
-
-glob.funktion_two_value = 0
-
-from flask import (Blueprint, flash, jsonify, redirect, render_template,
-                   request, url_for)
-from flask_login import current_user, login_required, login_user, logout_user
-from werkzeug.security import check_password_hash, generate_password_hash
-
-from . import db
-from .models import Note, User
+import random
 
 views = Blueprint('views', __name__)
 
-def step_calculator(zahl, ware_preis):
+def step_calculator(zahl, ware_preis, letzte_preis):
+    output_text = 0
     try:
-        ergebnis = zahl + int(ware_preis)
+        ergebnis = zahl * float(ware_preis)
         if ergebnis == 0:
-            return ergebnis
+            output_text = letzte_preis
+            return output_text
         else:
             output_text = round(ergebnis, 2)
             return output_text
     except ValueError:
-        return ergebnis
+        output_text = letzte_preis
+        return output_text
 
 def leergut_berechnung():
     pass
 
 def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
     try:
+        print("foo 2")
         if ware_preis is  0:
             ergebnis = int(breite)*int(hoehe)*int(tiefe) + int(lose)
             output_text = str(ergebnis)
@@ -46,7 +42,7 @@ def volumen_berechnung(breite, hoehe, tiefe, lose, ware_preis):
 
 @views.route("/", methods=["GET"])
 def home():
-    return render_template("home.html",  user=current_user)
+    return render_template("home.html")
 
 @views.route("/funktion-eins", methods=["GET","POST"])
 def funktion_one():
@@ -98,23 +94,26 @@ def funktion_two():
         ware_preis = request.form.get("ware_preis")
 
         if request.form.get('submit_button', False) == 'x1':
-            ware_preis = step_calculator(1,ware_preis)
+            output_text = step_calculator(1,ware_preis, letzte_preis)
 
         elif request.form.get('submit_button', False) == 'x2':
-            ware_preis = step_calculator(2,ware_preis)
+            output_text = step_calculator(2,ware_preis, letzte_preis)
+
+        elif request.form.get('submit_button', False) == 'x3':
+            output_text = step_calculator(3,ware_preis, letzte_preis)
 
         elif request.form.get('submit_button', False) == 'x5':
-            ware_preis = step_calculator(5,ware_preis)
+            output_text = step_calculator(5,ware_preis, letzte_preis)
 
         elif request.form.get('submit_button', False) == 'x10':
-            ware_preis = step_calculator(10,ware_preis)
+            output_text = step_calculator(10,ware_preis, letzte_preis)
         
         elif request.form.get('submit_button', False) == "clear":
             ware_preis = 0
             output_text = 0
-            
 
-    return render_template("funktion_two.html", ergebnis=ware_preis, ware_preis=ware_preis)
+
+    return render_template("funktion_two.html", ergebnis=output_text, ware_preis=ware_preis)
 
 @views.route("/funktion-drei", methods=["GET","POST"])
 def funktion_three():
