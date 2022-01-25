@@ -5,7 +5,7 @@ import os
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
+    app.config['SECRET_KEY'] = "34frH=FH8(HSFhdj)=8zvfbh"
     
     from .views import views
     

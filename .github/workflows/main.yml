@@ -7,10 +7,6 @@ on:
     paths-ignore:
       - '**.md'
 
-env:
-  API_KEY: ${{ secrets.API_KEY }}
-  SECRET_KEY: ${{ secrets.SECRET_KEY }}
-
 jobs:
   docker:
     runs-on: ubuntu-latest
