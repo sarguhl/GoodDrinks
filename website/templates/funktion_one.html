@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Funktion 1{% endblock %}
+{% block title %}Leergut-Rechner{% endblock %}
 {% block content %}
 <h1 align="center">Funktion 1</h1>
 
@@ -9,21 +9,21 @@
     <div align="center">
         <div class="wrapper">
             <div class="form__group">
-                <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Zahl Kästen"></input>
+                <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Anzahl Kästen"></input>
 
                 <i class="material-icons">add</i>
 
 
-                <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Zahl Popflaschen"></input>
+                <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Anzahl Popflaschen"></input>
 
                 <i class="material-icons">add</i>
 
 
-                <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Zahl Bierflaschen"></input>
+                <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Anzahl Bierflaschen"></input>
 
             </div>
         </div>
-        <button type="submit" class="submit-button">Submit</button>
+        <button type="submit" class="submit-button">Bestätigen</button>
 
         <p class="output_text">{{ ergebnis }}</p>
     </div>
