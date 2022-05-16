@@ -3,31 +3,60 @@
 {% block content %}
 <h1 align="center">Leergut-Rechner</h1>
 
+<div align="center">
+    <div class="wrapper">
+            <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Anzahl Kästen"></input>
 
-<form method="POST">
-
-    <div align="center">
-        <div class="wrapper">
-            <div class="form__group">
-                <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Anzahl Kästen"></input>
-
-                <i class="material-icons">add</i>
+            <i class="material-icons">add</i>
 
 
-                <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Anzahl Popflaschen"></input>
+            <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Anzahl Popflaschen"></input>
 
-                <i class="material-icons">add</i>
+            <i class="material-icons">add</i>
 
 
-                <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Anzahl Bierflaschen"></input>
-
-            </div>
-        </div>
-        <button type="submit" class="submit-button">Bestätigen</button>
-
-        <p class="output_text">{{ ergebnis }}</p>
+            <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Anzahl Bierflaschen"></input>
     </div>
 
+    <p id="output">0</p>
 
-</form>
+    <script>
+        var zahl1 = document.getElementById("zahl1");
+        var zahl2 = document.getElementById("zahl2");
+        var zahl3 = document.getElementById("zahl3");
+        var zahl1_val = 0;
+        var zahl2_val = 0;
+        var zahl3_val = 0;
+
+        var kasten = 1.50;
+        var flaschen = 0.15;
+        var bier_flaschen = 0.08;
+
+        function generateoutput(input){
+            document.getElementById("output").innerHTML = input;
+        }
+
+        document.addEventListener("keyup", event => {
+
+    
+            if (zahl1 && zahl1.value || zahl2 && zahl2.value || zahl3 && zahl3.value) {
+                if (!zahl1.value) {
+                    zahl1.value = 0;
+                }
+                if (!zahl2.value) {
+                    zahl2.value = 0;
+                }
+                if (!zahl3.value) {
+                    zahl3.value = 0;
+                }
+
+                var ergebnis = (parseInt(zahl1.value) * kasten) + (parseInt(zahl2.value) * flaschen) + (parseInt(zahl3.value) * bier_flaschen);
+                generateoutput(ergebnis)
+
+            }
+
+        });
+    </script>
+</div>
+
 {% endblock %}
