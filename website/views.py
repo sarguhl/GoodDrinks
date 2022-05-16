@@ -84,26 +84,26 @@ def funktion_one():
 def funktion_two():
     ware_preis = 0
 
-    if request.method == "POST":
-        ware_preis = request.form.get("ware_preis")
+    # if request.method == "POST":
+    #     ware_preis = request.form.get("ware_preis")
 
-        if request.form.get('submit_button', False) == 'x1':
-            ware_preis = step_calculator(1,ware_preis)
+    #     if request.form.get('submit_button', False) == 'x1':
+    #         ware_preis = step_calculator(1,ware_preis)
 
-        elif request.form.get('submit_button', False) == 'x2':
-            ware_preis = step_calculator(2,ware_preis)
+    #     elif request.form.get('submit_button', False) == 'x2':
+    #         ware_preis = step_calculator(2,ware_preis)
 
-        elif request.form.get('submit_button', False) == 'x5':
-            ware_preis = step_calculator(5,ware_preis)
+    #     elif request.form.get('submit_button', False) == 'x5':
+    #         ware_preis = step_calculator(5,ware_preis)
 
-        elif request.form.get('submit_button', False) == 'x10':
-            ware_preis = step_calculator(10,ware_preis)
+    #     elif request.form.get('submit_button', False) == 'x10':
+    #         ware_preis = step_calculator(10,ware_preis)
         
-        elif request.form.get('submit_button', False) == "clear":
-            ware_preis = 0
+    #     elif request.form.get('submit_button', False) == "clear":
+    #         ware_preis = 0
 
 
-    return render_template("funktion_two.html", ergebnis=ware_preis, ware_preis=ware_preis)
+    return render_template("funktion_two.html")
 
 @views.route("/funktion-drei", methods=["GET","POST"])
 def funktion_three():

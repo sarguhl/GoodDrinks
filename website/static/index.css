@@ -67,10 +67,10 @@ nav li a:hover {
     text-align: center;
     position: relative;
     cursor: pointer;
-    background: var(--menu-bg);
+    background: #0077FF;
     border: none;
     padding: 2rem;
-    color: var(--menu-font-color);
+    color: white;
     margin: 1rem;
     border-radius: 3px;
     text-decoration: none; 
@@ -87,8 +87,7 @@ nav li a:hover {
 }
 
 .btn-menu:hover{
-    background-color: #0077FF;
-    color: white;
+    background-color: #005ac2;
 }
 
 .btn {
@@ -172,7 +171,7 @@ h1 {
     transition: ease-out 0.3s;
 }
 
-.output_text {
+#output {
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     margin-top: 30px;

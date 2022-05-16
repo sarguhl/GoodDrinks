@@ -4,28 +4,56 @@
 <h1 align="center">Klicker-App</h1>
 
 
-<form method="POST">
+<div align="center">
+    <div class="wrapper">
+        <button name="submit_button" value="1" class="submit-button_1" id="plus_one">1</button>
+        <br>
+        <button name="submit_button" value="2" class="submit-button" id="plus_two">2</button>
+        <button name="submit_button" value="5" class="submit-button" id="plus_five">5</button>
+        <button name="submit_button" value="10" class="submit-button" id="plus_ten">10</button>
 
-    <div align="center">
-        <div class="wrapper">
-            <div class="form__group">
-
-                <button type="submit" name="submit_button" value="x1" class="submit-button_1">+1</button>
-                <br>
-                <button type="submit" name="submit_button" value="x2" class="submit-button">+2</button>
-                <button type="submit" name="submit_button" value="x5" class="submit-button">+5</button>
-                <button type="submit" name="submit_button" value="x10" class="submit-button">+10</button>
-
-                <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Waren Preis" value="{{ ware_preis }}" min="0" value="0" step=".01"></input>
-
-            </div>
-        </div>
-
-        <p class="output_text">{{ ergebnis }}</p>
-        <button type="submit" name="submit_button" value="clear" class="clear-button">Clear</button>
-
+        <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Waren Preis" value="{{ ware_preis }}" min="0" value="0" step=".01"></input>
     </div>
 
+    <p id="output">0</p>
+    <button data-all-clear name="submit_button" value="clear" class="clear-button" id="clear">Clear</button>
 
-</form>
+    <script type="text/javascript">
+        function generateoutput(input, lastnum){
+            var last = lastnum;
+            var add = input;
+            var number = last + add;
+            document.getElementById("output").innerHTML = number;
+        }
+
+        function clear() {
+            document.getElementById("output").innerHTML = 0;
+        }
+
+        document.getElementById('plus_one').onclick = function() {
+            
+            generateoutput(1, parseInt(document.getElementById('output').innerHTML))
+        };
+        document.getElementById('plus_two').onclick = function() {
+
+            generateoutput(2, parseInt(document.getElementById('output').innerHTML))
+        };
+        document.getElementById('plus_five').onclick = function() {
+
+            generateoutput(5, parseInt(document.getElementById('output').innerHTML))
+        };
+        document.getElementById('plus_ten').onclick = function() {
+
+            generateoutput(10, parseInt(document.getElementById('output').innerHTML))
+        };
+
+        document.getElementById('clear').onclick = function() {
+            clear()
+        };
+
+    </script>
+
+
+</div>
+
 {% endblock %}

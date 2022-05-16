@@ -1,1 +1,1 @@
-while true:
+import whois
