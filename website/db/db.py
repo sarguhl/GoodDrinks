@@ -1,10 +1,14 @@
+import imp
 from os.path import isfile
 import pymysql.cursors
+import time
 
 from apscheduler.triggers.cron import CronTrigger
 
 DB_PATH = "./data/db/database.db"
 BUILD_PATH = "./data/db/build.sql"
+
+time.sleep(500)
 
 db = pymysql.connect(
     host="172.17.0.1",
