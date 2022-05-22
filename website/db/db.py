@@ -10,9 +10,10 @@ BUILD_PATH = "./data/db/build.sql"
 
 db = pymysql.connect(
     host="172.17.0.1",
+    db="sarguhl_bereich",
     user="sarguhl_user710953",
     password="TioTio$a!1234",
-    database="sarguhl_bereich"
+    charset='utf8mb4'
 )
 cur = db.cursor()
 
