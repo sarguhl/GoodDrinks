@@ -8,8 +8,6 @@ from apscheduler.triggers.cron import CronTrigger
 DB_PATH = "./data/db/database.db"
 BUILD_PATH = "./data/db/build.sql"
 
-time.sleep(500)
-
 db = pymysql.connect(
     host="172.17.0.1",
     user="sarguhl_user710953",
