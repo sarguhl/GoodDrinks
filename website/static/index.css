@@ -147,7 +147,6 @@ h1 {
     width: 150px;
     height: 50px;
     border-radius: 3px;
-    margin-top: 30px;
 }
 
 .submit-button:hover {
@@ -245,4 +244,217 @@ i {
 .submit-button_1:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     transition: ease-out 0.3s;
+}
+
+.neuer_bereich {
+    background-color: #ffffff;
+    margin: 10px;
+  
+    max-width: fit-content;
+    width: 100%;
+  
+  
+    text-align: left;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.neuer_bereich div {
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    background: none;
+    padding: 10px;
+}
+
+.neuer_bereich p {
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+}
+
+.bereich_nummer {
+    color: #333;
+    font-size: 1rem;
+
+    margin-top: 8px;
+    padding: 5px;
+    order: none;
+    border-radius: 0.2rem;
+    background-color: #F5F5FA;
+    border: none;
+    height: 50px;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+    max-width: 17em;
+    max-height: 7em;
+
+    resize: none;
+}
+
+.divline {
+    height: 1px;
+    width: 80%;
+    border: none;
+    background-color: lightgrey;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.angelegter_bereich {
+    background-color: #ffffff;
+    margin: 10px;
+  
+    max-width: fit-content;
+    width: 100%;
+  
+  
+    text-align: left;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.angelegter_bereich div {
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    background: none;
+    padding: 10px;
+}
+
+.angelegter_bereich p, h1, h2, h3 {
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+}
+
+#cancel, #cancel2 {
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #FF6600;
+    border: none;
+    padding: 1rem;
+    color: white;
+    margin: 1rem;
+    border-radius: 3px;
+    text-decoration: none; 
+}
+
+#cancel:hover, #cancel2:hover{
+    background-color: #ffffff;
+    color: #FF6600;
+}
+
+#sendmsgbtn, #sendmsgbtn2 {
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #0077FF;;
+    border: none;
+    padding: 1rem;
+    color: white;
+    margin: 1rem;
+    border-radius: 3px;
+    text-decoration: none; 
+}
+
+#sendmsgbtn:hover, #sendmsgbtn2:hover{
+    background-color: #ffffff;
+    color: #0077FF;;
+}
+
+
+dialog {
+    font-family: 'Montserrat', sans-serif;
+    margin: 200px auto;
+    width: 500px;
+    max-width: 100%;
+    border-radius: 5px;
+    border: none;
+    background: #F5F5FA;
+    padding: 20px;
+    text-align: center;
+}
+
+dialog input {
+    color: #333;
+    font-size: 1rem;
+
+    margin: 0 auto;
+    margin-top: 8px;
+    padding: 5px;
+    order: none;
+    border-radius: 0.2rem;
+    background-color: white;
+    border: none;
+    height: 50px;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+    max-width: 17em;
+    max-height: 7em;
+
+    resize: none;
+}
+
+#adminbtn {
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #FF6600;
+    border: none;
+    padding: 1rem;
+    color: white;
+    margin: 1rem;
+    border-radius: 3px;
+    text-decoration: none; 
+}
+
+#adminbtn:hover{
+    background-color: #ffffff;
+    color: #FF6600;
+}
+
+
+.gesch_bereich {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #ffffff;
+    margin: 10px;
+  
+    max-width: fit-content;
+    width: 100%;
+  
+  
+    text-align: left;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.gesch_bereich div {
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    background: none;
+    padding: 10px;
+}
+
+.gesch_bereich p, h1, h2, h3 {
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+}
+.bereich_claim {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
 }
