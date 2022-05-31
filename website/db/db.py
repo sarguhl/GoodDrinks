@@ -15,7 +15,17 @@ db = pymysql.connect(
     password="TioTio$a!1234",
     charset='utf8mb4'
 )
+
+# db = pymysql.connect(
+#     host="localhost",
+#     db="dashboard",
+#     user="emil",
+#     password="emil",
+#     charset='utf8mb4'
+# )
 cur = db.cursor()
+
+
 
 
 def with_commit(func):

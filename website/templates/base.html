@@ -11,10 +11,25 @@
     </head>
     <body>
         <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-              </ul>
+            <div class="nav_elements">
+
+                <div class="nav_burger">
+                    <label for="check">
+                        <input type="checkbox" id="check"/> 
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+                <div class="logo">
+                    <h1>G</h1>
+                </div>
+            </div>
         </nav>
+
+        <div class="ext_nav">
+
+        </div>
 
         {% with messages = get_flashed_messages(with_categories=true) %} {% if
         messages %} {% for category, message in messages %} {% if category ==
