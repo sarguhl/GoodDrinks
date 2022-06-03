@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, request, flash, jsonify, redirect,
 import json
 import random
 
-from website.db import db
+#from website.db import db
 
 views = Blueprint('views', __name__)
 
@@ -155,82 +155,82 @@ def hilfe():
 def impressum():
     return render_template("impressum.html")
 
-@views.route("/offene-bereiche", methods=["GET", "POST"])
-def offene_bereiche():
-    bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 0)
-    c_bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 1)
-    db.commit()
+# @views.route("/offene-bereiche", methods=["GET", "POST"])
+# def offene_bereiche():
+#     bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 0)
+#     c_bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 1)
+#     db.commit()
 
-    print(bereiche)
+#     print(bereiche)
 
     
-    return render_template("offene_bereiche.html", bereiche=bereiche, c_bereiche=c_bereiche)
+#     return render_template("offene_bereiche.html", bereiche=bereiche, c_bereiche=c_bereiche)
 
-@views.route("/offene-bereiche/add", methods=["GET", "POST"])
-def add_entry():
-    if request.method == 'POST':
-        print("Adding DB")
+# @views.route("/offene-bereiche/add", methods=["GET", "POST"])
+# def add_entry():
+#     if request.method == 'POST':
+#         print("Adding DB")
 
-        requ = request.get_json(force=True)
-        bereich_nummer = requ["bereich_nummer"]
-        bereich_name = requ["bereich_name"]
-        pw = requ["sendMessage"]
-        print(f"""
-        ------------------------------
-        ID: {bereich_nummer}
-        INHALT: {bereich_name}
-        ------------------------------
-        """)
-        if int(bereich_nummer) is None:
-            print("lmao")
-            return
-        if str(bereich_name) is None:
-            print("lmao")
-            return
+#         requ = request.get_json(force=True)
+#         bereich_nummer = requ["bereich_nummer"]
+#         bereich_name = requ["bereich_name"]
+#         pw = requ["sendMessage"]
+#         print(f"""
+#         ------------------------------
+#         ID: {bereich_nummer}
+#         INHALT: {bereich_name}
+#         ------------------------------
+#         """)
+#         if int(bereich_nummer) is None:
+#             print("lmao")
+#             return
+#         if str(bereich_name) is None:
+#             print("lmao")
+#             return
 
-        if pw == "1234":
-            db.execute("INSERT IGNORE INTO bereich (bereichID, bereichName) VALUES (%s, %s)", int(bereich_nummer), str(bereich_name))
-            db.commit()
-        else:
-            return
+#         if pw == "1234":
+#             db.execute("INSERT IGNORE INTO bereich (bereichID, bereichName) VALUES (%s, %s)", int(bereich_nummer), str(bereich_name))
+#             db.commit()
+#         else:
+#             return
 
-    return "ok"
+#     return "ok"
 
-@views.route("/offene-bereiche/delete", methods=["GET", "POST"])
-def declined_post():
-    if request.method == 'POST':
-        declined = request.get_json(force=True)
-        delete_all = declined["declined"]
-        psw = declined["sendMessage"]
-        if psw == "1234":
-            db.execute("TRUNCATE TABLE bereich")
-            db.commit()
-        else:
-            return
+# @views.route("/offene-bereiche/delete", methods=["GET", "POST"])
+# def declined_post():
+#     if request.method == 'POST':
+#         declined = request.get_json(force=True)
+#         delete_all = declined["declined"]
+#         psw = declined["sendMessage"]
+#         if psw == "1234":
+#             db.execute("TRUNCATE TABLE bereich")
+#             db.commit()
+#         else:
+#             return
 
-    return "ok"
+#     return "ok"
 
-@views.route("/offene-bereiche/rev", methods=["GET", "POST"])
-def resolve_bereich():
-    if request.method == "POST":
-        bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 0)
-        c_bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 1)
-        db.commit()
-        status = 1
-        rev = request.get_json(force=True)
-        bereichId = rev["bereichId"]
-        current_status = 0
-        for current in bereiche:
-            print(current[0])
-            if current[0] == int(bereichId):
-                status = 1
-        for current in c_bereiche:
-            if current[0] == int(bereichId):
-                print(current[0])
-                print(bereichId)
-                status = 0
+# @views.route("/offene-bereiche/rev", methods=["GET", "POST"])
+# def resolve_bereich():
+#     if request.method == "POST":
+#         bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 0)
+#         c_bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 1)
+#         db.commit()
+#         status = 1
+#         rev = request.get_json(force=True)
+#         bereichId = rev["bereichId"]
+#         current_status = 0
+#         for current in bereiche:
+#             print(current[0])
+#             if current[0] == int(bereichId):
+#                 status = 1
+#         for current in c_bereiche:
+#             if current[0] == int(bereichId):
+#                 print(current[0])
+#                 print(bereichId)
+#                 status = 0
 
-        db.execute("UPDATE bereich SET status = %s WHERE bereichID = %s", status, bereichId)
-        db.commit()
+#         db.execute("UPDATE bereich SET status = %s WHERE bereichID = %s", status, bereichId)
+#         db.commit()
 
-    return "ok"
+#     return "ok"
