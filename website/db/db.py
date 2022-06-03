@@ -1,6 +1,6 @@
 import imp
 from os.path import isfile
-import mariadb
+import pymysql.cursors
 import time
 
 from apscheduler.triggers.cron import CronTrigger
@@ -8,25 +8,22 @@ from apscheduler.triggers.cron import CronTrigger
 DB_PATH = "./data/db/database.db"
 BUILD_PATH = "./data/db/build.sql"
 
+db = pymysql.connect(
+    host="172.17.0.8",
+    db="sarguhl_bereich",
+    user="sarguhl_user710953",
+    password="TioTio$a!1234",
+    charset='utf8mb4'
+)
+
 # db = pymysql.connect(
-#     host="172.17.0.1",
-#     db="sarguhl_bereich",
-#     user="sarguhl_user710953",
-#     password="TioTio$a!1234",
+#     host="localhost",
+#     db="dashboard",
+#     user="emil",
+#     password="emil",
 #     charset='utf8mb4'
 # )
-
-config = {
-    'host': '172.17.0.1',
-    'port': 3306,
-    'user': 'sarguhl_user710953',
-    'password': 'TioTio$a!1234',
-    'database': 'sarguhl_bereich'
-}
-
-
-conn = mariadb.connect(**config)
-cur = conn.cursor()
+cur = db.cursor()
 
 
 
