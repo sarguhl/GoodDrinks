@@ -121,12 +121,12 @@ nav {
     cursor: pointer;
     margin-top: 5px;
     z-index: 31;
-}
+  }
 
   .menu__box {
     z-index: 30;
     display: block;
-
+    position: fixed;
     top: 0;
     left: -100%;
     width: 300px;
