@@ -2,13 +2,14 @@
 * {
     padding: 0;
     margin: 0;
-    background-color: #F5F5FA;
+    
     box-sizing: border-box;
     line-break: auto;
 }
 
 html {
     font-size: 62.5%;
+    background-color: #F5F5FA;
 }
 
 body {
@@ -22,7 +23,7 @@ main {
 
 .home-wrapper h1 {
     font-size: 43px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -36,12 +37,12 @@ nav {
     background-color: none;
 
     width: 100%;
+
 }
 
 .nav_elements {
     font-family: 'Montserrat', sans-serif;
-    margin: 10px;
-    text-align: right;
+    margin: 15px;
 }
 
 .logo {
@@ -51,10 +52,11 @@ nav {
 }
 
 .logo h1 {
-    font-weight: 900;
+    font-size: 30px;
 }
 
 .nav_burger {
+    margin-top: 5px;
     width: 30px;
     float: left;
     font-weight: 900;
@@ -68,7 +70,7 @@ nav {
     cursor:pointer;
 }
 
-.nav_burger label span{
+.menu__btn span{
     background: rgb(0, 0, 0);
     border-radius:10px;
     height:3px;
@@ -78,58 +80,86 @@ nav {
 }
 
 
-.nav_burger span:nth-of-type(1){
+.menu__btn span:nth-of-type(1){
     width:50%;
     
 }
 
-.nav_burger span:nth-of-type(2){
+.menu__btn span:nth-of-type(2){
     width:100%;
 }
 
 
-.nav_burger span:nth-of-type(3){
+.menu__btn span:nth-of-type(3){
     width:75%;
 
 }
 
-
-.nav_burger input[type="checkbox"]{
+.menu__btn input[type="checkbox"]{
     display:none;
 }
 
 .ext_nav {
     height: 40px;
-    margin-top: 20px;
 }
+
+#menu__toggle {
+    opacity: 0;
+  }
+
+  #menu__toggle:checked ~ .menu__box {
+    left: 0 !important;
+  }
+  .menu__btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 26px;
+    cursor: pointer;
+    margin-top: 5px;
+    z-index: 20;
+  }
+
+  .menu__box {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
+  }
+
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+  }
+  .menu__item:hover {
+    background-color: #CFD8DC;
+  }
+
+
+
+
+
+
 
 
 .wrapper {
     margin: 0 auto;
     max-width: 100%;
 }
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-}
   
-nav li a {
-    display: block;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none; 
-    background-color: black;
-}
-  
-nav li a:hover {
-    background-color: #0077FF;
-}
-
 .menu {
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -138,6 +168,7 @@ nav li a:hover {
     max-width: 100%;
     border-radius: 2rem;
     background: var(--menu-bg);
+    margin-left: 5px;
 }
 
 .btn-menu {
@@ -300,7 +331,6 @@ i {
 
 #btn-menu-mail {
     text-align: center;
-    position: relative;
     cursor: pointer;
     background: #0077FF;
     border: none;
@@ -319,7 +349,6 @@ i {
 
 #btn-menu-os {
     text-align: center;
-    position: relative;
     cursor: pointer;
     background: #FF6600;
     border: none;
@@ -441,7 +470,6 @@ i {
 
 #cancel, #cancel2 {
     text-align: center;
-    position: relative;
     cursor: pointer;
     background: #FF6600;
     border: none;
@@ -459,7 +487,6 @@ i {
 
 #sendmsgbtn, #sendmsgbtn2 {
     text-align: center;
-    position: relative;
     cursor: pointer;
     background: #0077FF;;
     border: none;
@@ -512,7 +539,6 @@ dialog input {
 
 #adminbtn {
     text-align: center;
-    position: relative;
     cursor: pointer;
     background: #FF6600;
     border: none;
