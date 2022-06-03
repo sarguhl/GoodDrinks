@@ -112,8 +112,8 @@ nav {
   #menu__toggle:checked ~ .menu__box {
     left: 0 !important;
   }
-  .menu__btn {
-    position: fixed;
+.menu__btn {
+    position: absolute;
     top: 20px;
     left: 20px;
     width: 30px;
@@ -121,12 +121,12 @@ nav {
     cursor: pointer;
     margin-top: 5px;
     z-index: 31;
-  }
+}
 
   .menu__box {
     z-index: 30;
     display: block;
-    position: fixed;
+
     top: 0;
     left: -100%;
     width: 300px;
