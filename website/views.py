@@ -157,8 +157,8 @@ def impressum():
 
 @views.route("/offene-bereiche", methods=["GET", "POST"])
 def offene_bereiche():
-    bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 0)
-    c_bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 1)
+    bereiche = db.records("SELECT bereichID, bereichName FROM sarguhl_bereich.bereich WHERE status = %s ORDER BY bereichID desc", 0)
+    c_bereiche = db.records("SELECT bereichID, bereichName FROM sarguhl_bereich.bereich WHERE status = %s ORDER BY bereichID desc", 1)
     db.commit()
 
     print(bereiche)
@@ -213,8 +213,8 @@ def declined_post():
 @views.route("/offene-bereiche/rev", methods=["GET", "POST"])
 def resolve_bereich():
     if request.method == "POST":
-        bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 0)
-        c_bereiche = db.records("SELECT bereichID, bereichName FROM dashboard.bereich WHERE status = %s ORDER BY bereichID desc", 1)
+        bereiche = db.records("SELECT bereichID, bereichName FROM sarguhl_bereich.bereich WHERE status = %s ORDER BY bereichID desc", 0)
+        c_bereiche = db.records("SELECT bereichID, bereichName FROM sarguhl_bereich.bereich WHERE status = %s ORDER BY bereichID desc", 1)
         db.commit()
         status = 1
         rev = request.get_json(force=True)
