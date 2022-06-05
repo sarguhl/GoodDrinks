@@ -9,7 +9,7 @@ DB_PATH = "./data/db/database.db"
 BUILD_PATH = "./data/db/build.sql"
 
 db = pymysql.connect(
-    host="localhost",
+    host="172.17.0.1",
     db="sarguhl_bereich",
     user="sarguhl_user710953",
     password="TioTio$a!1234",
