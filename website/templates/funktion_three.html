@@ -2,35 +2,76 @@
 {% block title %}Lagen-Rechnung{% endblock %}
 {% block content %}
 
+<div align="center">
+    <div class="wrapper">
+        <div class="form__group">
+            <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Höhe"></input>
 
-<form method="POST">
+            <i class="material-icons">add</i>
 
-    <div align="center">
-        <div class="wrapper">
-            <div class="form__group">
-                <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Höhe"></input>
+            <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Breite"></input>
 
-                <i class="material-icons">add</i>
+            <i class="material-icons">add</i>
 
-                <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Breite"></input>
+            <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Tiefe"></input>
 
-                <i class="material-icons">add</i>
+            <i class="material-icons">add</i>
 
-                <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Tiefe"></input>
+            <input name="zahl4" id="zahl4" class="form__input" type="number" placeholder="Lose (Optional)"></input>
 
-                <i class="material-icons">add</i>
+            <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Waren Preis (Optional)" min="0" step=".01"></input>
 
-                <input name="zahl4" id="zahl4" class="form__input" type="number" placeholder="Lose (Optional)"></input>
-
-                <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Waren Preis (Optional)" min="0" step=".01"></input>
-
-            </div>
         </div>
-        <button type="submit" class="submit-button">Submit</button>
-
-        <p class="output_text">{{ ergebnis }} Waren</p>
     </div>
+    <button type="submit" class="submit-button">Submit</button>
 
+    <p id="output">0</p>
+    <p id="ware_output">0€</p>
+</div>
 
-</form>
+<script>
+    var zahl1 = document.getElementById("zahl1");
+    var zahl2 = document.getElementById("zahl2");
+    var zahl3 = document.getElementById("zahl3");
+    var zahl4 = document.getElementById("zahl4");
+    var zahl5 = document.getElementById("ware_preis");
+    var zahl1_val = 0;
+    var zahl2_val = 0;
+    var zahl3_val = 0;
+    var zahl4_val = 0;
+    var zahl5_val = 0;
+
+    function generateoutput(breite, hoehe, tiefe, lose, ware_preis){
+        var output = breite * hoehe * tiefe + lose;
+        var preis = output * ware_preis;
+        document.getElementById("output").innerHTML = output;
+        document.getElementById("ware_output").innerHTML = preis + "€";
+    }
+    document.addEventListener("keyup", event => {
+
+    
+        if (zahl1 && zahl1.value || zahl2 && zahl2.value || zahl3 && zahl3.value || zahl4 && zahl4.value) {
+            if (!zahl1.value) {
+                zahl1.value = 0;
+            }
+            if (!zahl2.value) {
+                zahl2.value = 0;
+            }
+            if (!zahl3.value) {
+                zahl3.value = 0;
+            }
+            if (!zahl4.value) {
+                zahl4.value = 0;
+            }
+            if (!zahl5.value) {
+                zahl5.value = 0;
+            }
+
+            generateoutput(parseInt(zahl1.value),parseInt(zahl2.value),parseInt(zahl3.value),parseInt(zahl4.value),parseInt(zahl5.value))
+
+        }
+
+    });
+</script>
+
 {% endblock %}
