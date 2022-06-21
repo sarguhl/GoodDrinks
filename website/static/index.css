@@ -714,3 +714,58 @@ dialog input {
 .add_btns {
     margin-top: 10px;
 }
+
+
+
+
+
+
+.allgemein, .neues, .wgt {
+    display: absolute;
+    padding: 8px 16px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-decoration: none;
+    transition-duration: .25s;
+    border-radius: 50px;
+    width: fit-content;
+}
+
+.allgemein {
+    color: #356efc;
+    background-color: #bcdbff;
+}
+.neues {
+    color: #1bad40;
+    background-color: #c4ffce;
+
+}
+.wgt {
+    color: #fc6d35;
+    background-color: #ffd7bc;
+}
+
+.devlog {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    max-width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+
+    margin: 10px;
+}
+
+.devlog_title {
+    margin-bottom: 10px;
+}
+
+.blog {
+    margin-left: 5px;
+}
+
+.app_info {
+    color: gray;
+    margin-left: 15px;
+}

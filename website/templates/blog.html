@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="home-wrapper">
+    <h1>Devlog</h1>
+    <p class="app_info">
+    Version: 1.0.2
+    </p>
+    <div class="blog">
+        <div class="devlog">
+            <p class="neues">Neues</p>
+            <h2 class="devlog_title">Neu: Devlog</h2>
+            <p>
+            <b>Es gibt nun einen Devlog! (Bzw. Developer Log)!</b>
+            <br>
+            <br>
+            Das bedeutet, dass ihr hier auf der Webseite nun neue Updates und Features direkt mitbekommt, wenn ihr euch hier die neusten Einträge anschaut.
+            Diese Einträge dokumentieren die Veränderungen und erklären diese.
+            <br>
+            <br>
+            Es gibt auch so genannte Tags!
+            <br>
+            <br> 
+            <span class="allgemein">Sowas hier!</span>
+            <br>
+            <br>
+            Diese helfen euch zu erkennen, worum es in dem Eintrag geht. Es gibt 3 verschiedene Tags:
+            <br>
+            <br>
+            1. <b>Allgemein</b>: Erklärt allgemeine Veränderungen und Updates.
+            <br>
+            2. <b>Neues</b>: Dieser Tag wird benutzt, wenn es neue konkrete Änderungen gibt.
+            <br>
+            3. <b>Wie geht das?</b>: Wird benutzt um verschiedene Funktionen zu erklären.
+            <br>
+            <br>
+            Viel Spaß!
+            </p>
+        </div>
+        <div class="devlog">
+            <p class="allgemein">Allgemein</p>
+            <h2 class="devlog_title">22.06.2022</h2>
+            <p>
+            1. Es wurde eine neue Funktion eingeführt. Diese beinhaltet die Möglichkeit, Bereiche hinzuzufügen mit einer Beschreibung (nur für TLs). Mitarbeiter können diese Bereiche dann als erledigt ankreuzen, um diese in einen neuen Bereich zu verschieben. So kann gut ein Überblick behalten werden, wie weit der Fortschritt in der Filiale bereits ist.
+            <br>
+            <br>
+            2. Es gibt größere Veränderungen im Bereich der Benutzeroberfläche und der Erfahrung. So wurde die Home-Page überarbeitet und es gibt nun eine neue Navigationsleiste. 
+            <br>
+            <br>
+            2.1 Die Klicker-App hat nun eine neue Anordnung, welche die Bedienung angenehmer macht. Das "Ware-Preis"-Feld hat nun auch eine dynamische Funktion.
+            <br>
+            <br>
+            3. Die Funkion Drei (Lagenrechnung) ist nun auch 100% dynamisch. So kann man alles nun schneller eingeben und man bekommt ein Live-Update.
+            </p>
+        </div>
+        
+        <div class="devlog">
+            <p class="neues">Neues</p>
+            <h2 class="devlog_title">21.06.2022</h2>
+            <p>
+            Hallo. Die App wird für einige Minuten nicht erreichbar sein. Das liegt an Wartungen. Bitte habt einen Moment Geduld! :)
+            </p>
+        </div>
+    
+        <div class="devlog">
+            <p class="wgt">Wie geht das?</p>
+            <h2 class="devlog_title">Neue Bereiche hinzufügen</h2>
+            <p>
+            <b>Wie füge ich einen neuen Bereich hinzu?</b>
+            <br>
+            Um einen neuen Bereich hinzuzufügen, gehe bitte zu den <a href="/offene-bereiche">offenen Bereichen</a>. Dort wirst du ein Feld finden, welches dir erlaubt eine Bereichnummer und eine entsprechende Beschreibung hinzufügen. Danach gebe bitte das Passwort ein! (Das liegt daran, dass diese Funktion nur für Teamleiter zu Verfügung steht).
+            <br>
+            Und Fertig! Dein Bereich sollte nun nach dem aktuallisieren der Seite verfügbar sein.
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
