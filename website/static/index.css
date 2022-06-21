@@ -154,7 +154,6 @@ nav {
     display: inline-block;
     padding: 12px 24px;
     margin: 10px;
-    margin-left: 24px;
     font-size: 15px;
     text-decoration: none;
     transition-duration: .25s;
@@ -191,6 +190,7 @@ nav {
 .qa {
 display: inline-block; 
   vertical-align: top;
+  margin-left: 14px;
 }
 
 
