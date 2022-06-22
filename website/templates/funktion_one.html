@@ -41,7 +41,7 @@
 
         document.addEventListener("keyup", event => {
 
-    
+            window.navigator.vibrate(50);
             if (zahl1 && zahl1.value || zahl2 && zahl2.value || zahl3 && zahl3.value) {
                 if (!zahl1.value) {
                     zahl1.value = 0;
