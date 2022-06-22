@@ -157,7 +157,7 @@ nav {
     font-size: 15px;
     text-decoration: none;
     transition-duration: .25s;
-    color: #356efc;
+    color: #1744b8;
     background-color: #bcdbff;
     border-radius: 50px;
     width: fit-content;
@@ -181,7 +181,7 @@ nav {
     font-size: 15px;
     text-decoration: none;
     transition-duration: .25s;
-    color: #fc6d35;
+    color: #b83c0c;
     background-color: #ffd7bc;
     border-radius: 50px;
     width: fit-content;
@@ -732,7 +732,7 @@ dialog input {
 }
 
 .allgemein {
-    color: #356efc;
+    color: #1744b8;
     background-color: #bcdbff;
 }
 .neues {
@@ -741,7 +741,7 @@ dialog input {
 
 }
 .wgt {
-    color: #fc6d35;
+    color: #b83c0c;
     background-color: #ffd7bc;
 }
 
