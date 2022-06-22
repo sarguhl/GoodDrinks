@@ -137,6 +137,8 @@ nav {
     background-color: #ffffff;
 }
 
+/* center */
+
 .menu__item {
     display: block;
     padding: 12px 24px;
@@ -781,4 +783,8 @@ dialog input {
 
 .fk3-field {
     display: inline-block;
+}
+
+.wrapper {
+    margin-top: 15px;
 }
