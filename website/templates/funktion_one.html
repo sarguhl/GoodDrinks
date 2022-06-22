@@ -4,20 +4,24 @@
 
 <div align="center">
     <div class="wrapper">
-            <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Anzahl Kästen"></input>
+            <div class="fk3-field">
+                <p class="allgemein">Kästen</p>
+                <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Anzahl Kästen"></input>
+            </div>
 
-            <i class="material-icons">add</i>
+            <div class="fk3-field">
+                <p class="allgemein">Popflaschen</p>
+                <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Anzahl Popflaschen"></input>
+            </div>
 
-
-            <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Anzahl Popflaschen"></input>
-
-            <i class="material-icons">add</i>
-
-
-            <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Anzahl Bierflaschen"></input>
+            <div class="fk3-field">
+                <p class="allgemein">Bierflaschen</p>
+                <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Anzahl Bierflaschen"></input>
+            </div>
     </div>
 
-    <p id="output">0</p>
+    <p class="neues">Ergebnis</p>
+    <p id="output">0€</p>
 
     <script>
         var zahl1 = document.getElementById("zahl1");
@@ -32,7 +36,7 @@
         var bier_flaschen = 0.08;
 
         function generateoutput(input){
-            document.getElementById("output").innerHTML = input;
+            document.getElementById("output").innerHTML = input + "€";
         }
 
         document.addEventListener("keyup", event => {

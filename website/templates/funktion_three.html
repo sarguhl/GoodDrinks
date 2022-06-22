@@ -5,26 +5,35 @@
 <div align="center">
     <div class="wrapper">
         <div class="form__group">
-            <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Höhe"></input>
+            <div class="fk3-num">
+                <div class="fk3-field">
+                    <p class="allgemein">Breite</p>
+                    <input name="zahl1" id="zahl1" class="form__input" type="number" placeholder="Breite"></input>
+                </div>
+    
+                <div class="fk3-field">
+                    <p class="allgemein">Tiefe</p>
+                    <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Tiefe"></input>   
+                </div>
+    
+                <div class="fk3-field">
+                    <p class="allgemein">Höhe</p>
+                    <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Höhe"></input>
+                </div>
 
-            <i class="material-icons">add</i>
+                <div class="fk3-field">
+                    <p class="allgemein">Lose</p>
+                    <input name="zahl4" id="zahl4" class="form__input" type="number" placeholder="Lose"></input>
+                </div>
+            </div>
 
-            <input name="zahl2" id="zahl2" class="form__input" type="number" placeholder="Breite"></input>
-
-            <i class="material-icons">add</i>
-
-            <input name="zahl3" id="zahl3" class="form__input" type="number" placeholder="Tiefe"></input>
-
-            <i class="material-icons">add</i>
-
-            <input name="zahl4" id="zahl4" class="form__input" type="number" placeholder="Lose (Optional)"></input>
-
-            <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Waren Preis (Optional)" min="0" step=".01"></input>
+            <p class="allgemein">Preis</p>
+            <input name="ware_preis" id="ware_preis" class="form__input" type="number" placeholder="Preis" min="0" step=".01"></input>
 
         </div>
     </div>
-    <button type="submit" class="submit-button">Submit</button>
 
+    <p class="neues">Ergebnis</p>
     <p id="output">0</p>
     <p id="ware_output">0€</p>
 </div>
