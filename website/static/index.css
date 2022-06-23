@@ -34,6 +34,15 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
 nav {
     background-color: none;
 
@@ -70,7 +79,6 @@ nav {
     width:30px;
     cursor:pointer;
 }
-
 .menu__btn span{
 
     background: rgb(0, 0, 0);
@@ -96,22 +104,9 @@ nav {
     width:75%;
 
 }
-
-.menu__btn input[type="checkbox"]{
-    display:none;
-}
-
 .ext_nav {
     height: 40px;
 }
-
-#menu__toggle {
-    opacity: 0;
-  }
-
-  #menu__toggle:checked ~ .menu__box {
-    left: 0 !important;
-  }
 .menu__btn {
     position: absolute;
     top: 20px;
@@ -123,11 +118,12 @@ nav {
     z-index: 31;
 }
 
+
 .menu__box {
     z-index: 30;
     display: block;
     position: fixed;
-    top: 0;
+    top: 0 !important;
     left: -100%;
     width: 300px;
     height: 100%;
@@ -144,7 +140,7 @@ nav {
     padding: 12px 24px;
     color: #333;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
     text-decoration: none;
     transition-duration: .25s;
 }
@@ -152,42 +148,95 @@ nav {
     background-color: #CFD8DC;
 }
 
-.menu__item_ann {
+.menu__item_ann, .menu__item_ann1, .menu__item_ann2 {
     display: inline-block;
     padding: 12px 24px;
     margin: 10px;
-    font-size: 15px;
+    font-weight: 400;
     text-decoration: none;
     transition-duration: .25s;
+    border-radius: 50px;
+    width: fit-content;
+}
+
+.menu__item_ann {
     color: #1744b8;
     background-color: #bcdbff;
-    border-radius: 50px;
-    width: fit-content;
 }
+
 .menu__item_ann1 {
-    display: inline-block;
-    padding: 12px 24px;
-    margin: 10px;
-    font-size: 15px;
-    text-decoration: none;
-    transition-duration: .25s;
     color: #1bad40;
     background-color: #c4ffce;
-    border-radius: 50px;
-    width: fit-content;
 }
 .menu__item_ann2 {
-    display: inline-block;
-    padding: 12px 24px;
-    margin: 10px;
-    font-size: 15px;
-    text-decoration: none;
-    transition-duration: .25s;
     color: #b83c0c;
     background-color: #ffd7bc;
-    border-radius: 50px;
-    width: fit-content;
 }
+
+@media only screen and (max-width: 960px) {
+    .menu__btn input[type="checkbox"]{
+        display:none;
+    }
+    #menu__toggle {
+        opacity: 0;
+    }
+    #menu__toggle:checked ~ .menu__box {
+        left: 0 !important;
+    }
+    #menu__toggle:checked ~ .menu__btn {
+        position: fixed;
+    }
+    .navtext {
+        display: none;
+    }
+    nav .divline {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 960px) {
+    #menu__toggle {
+        display:none;
+    }
+    .menu__box {
+        left: 0 !important;
+        display: block;
+        position: fixed;
+        padding: 10px 0;
+    }
+
+    body {
+        margin-left: 300px;
+    }
+
+    .nav_burger label {
+        display: none;
+    }
+
+
+    .logo {
+        display: none;
+    }
+}
+
+.navtext {
+    padding: 12px 24px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.navtext a {
+    text-decoration: none;
+    color: black;
+}
+
+.help_link {
+    margin: 20px;
+}
+
+
+
 
 .qa {
 display: inline-block; 
@@ -195,7 +244,23 @@ display: inline-block;
 }
 
 
+.menu img {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 10px;
 
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.emb_text {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 
 
@@ -496,7 +561,9 @@ i {
 
 .divline {
     height: 1px;
-    width: 80%;
+
+    margin-left: 20px;
+    margin-right: 20px;
     border: none;
     background-color: lightgrey;
     margin-top: 10px;

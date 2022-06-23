@@ -37,6 +37,10 @@ def impressum():
 def blog():
     return render_template("blog.html")
 
+@views.route("/funktion-drei/help")
+def fk3_help():
+    return render_template("fk3help.html")
+
 @views.route("/offene-bereiche", methods=["GET", "POST"])
 def offene_bereiche():
     bereiche = db.records("SELECT bereichID, bereichName FROM sarguhl_bereich.bereich WHERE status = %s ORDER BY bereichID desc", 0)

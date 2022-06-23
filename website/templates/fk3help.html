@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}FK3/Help{% endblock %}
+{% block content %}
+<div class="home-wrapper">
+    <div class="menu">
+        <h1>Brauchst du Hilfe?</h1>
+        <p class="wgt">Wie geht das?</p>
+        <p>In diesem Tutorial wird dir erklärt, wie die Lagenrechnung funktioniert.</p>
+        <img src="../static/3D-coordinates-cube.png">
+        <div class="emb_text">
+            <h2>Vorwissen</h2>
+            <div class="divline"></div>
+            <p>
+                Bei dieser Funktion muss man räumlich denken. Das bedeutet, dass man sich Objekte in 3 Dimensionen vorstellen kann. 
+                Es gibt 3 Achsen (siehe Abb. mit Würfel), X Y und Z. X ist für die Breite, Y für die Höhe, und Z für die Tiefe.
+            </p>
+            <h2>Funktionsweise</h2>
+            <div class="divline"></div>
+            <p>
+                Wie diese Funktion uns nun zu Nutzen kommt, lässt sich am besten anhand eines Beispiels erklären:
+                <br>
+                Nehmen wir an, dass wir vor einer Palette Zucker stehen. Wir wollen wissen, wie viel Zucker insgesammt auf der Palette liegt.
+                Aber da wir zu faul sind & zu wenig Zeit haben, können wir diese Funktion nun nutzen um möglichst wenig denken zu müssen und Zeit zu sparen.
+                Wir können nun Zählen:
+                <br>
+                Wir haben 5 Zuckerpackungen in der Breite liegen
+                <br>
+                8 Zuckerpackungen in der Höhe
+                <br>
+                und 4 Zuckerpackungen in der Tiefe.
+                <br>
+                Und ebenfalls liegen noch 6 lose Packungen oben drauf.
+                <br>
+                <br>
+                Was tun wir nun? Ganz einfach: Wir geben diese Zahlen nun in die entsprechenden Felder ein. 5 für Breite, 8 für Höhe, 4 für Tiefe und 6 für lose. 
+                Ebenfalls haben wir die Option einen Warenpreis einzufügen. Diese Wahl ist aber Optional.
+                Und sobald diese Werte eingetragen wurden, wird das Ergebnis automatisch angezeigt.
+                <br>
+                <br>
+                Ich hoffe, dass dieses Tutorial dir weiterhelfen konnte.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
