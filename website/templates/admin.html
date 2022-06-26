@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="home-wrapper">
+    <div class="menu">
+        <h1>Hallo, {{ user.first_name }}</h1>        
+        <form method="POST">
+            <h2 style="margin: 10px;">Devlog</h2>
+            <div class="neuer_bereich">
+                <div>            
+                    <p>Titel</p>
+                    <textarea name="title" id="title" class="form-control" placeholder="Titel..."></textarea>
+                </div>
+                <div>               
+                    <p>Devlog-Inhalt</p>
+                    <textarea name="note" id="note" class="form-control" placeholder="Text..."></textarea>
+                </div>
+                <div>
+                    <SELECT name="status" id="status">
+                        <option value="allgemein">Allgemein</option>
+                        <option value="neues">Neues</option>
+                        <option value="wgt">Wie geht das?</option>
+                    </SELECT>
+                </div>
+                <div>
+                    <button type="submit" id="submit" class="submit-button">Hinzufügen</button>    
+                </div>
+            </div>
+        </form>
+        <div class="users">
+            <h2>Mitarbeiter</h2>
+            {% for account in users %}
+            <div class="user">
+                <div class="user_info">
+                    <h3>Name: {{ account.first_name }}</h3>
+                    <p>Email: {{ account.email }}</p>
+                    <p>Typ: {{ account.user_state }}</p>
+                    <p class="user_id">ID: {{ account.id }}</p>
+                </div>
+                <a class="edit_user" href="/edit/{{ account.id }}">Bearbeiten</a>
+            </div>
+            {% endfor %}
+            <a class="menu__item_ann" href="/sign-up">+ Neuen Mitarbeiter Hinzufügen</a>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('submit').addEventListener("click", (e) => {
+        e.preventDefault();
+        selectElement = document.getElementById("status");
+        output = selectElement.value;
+        title = document.getElementById("title").value;
+        note = document.getElementById("note").value;
+        fetch("/admin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({status: output, title: title, note: note})
+        })
+
+    })
+</script>
+
+{% endblock %}

@@ -24,51 +24,62 @@
                     
                     
                     <ul class="menu__box">
-                      <h1 class="navtext"><a href="/">GoodDrinks</a></h1>
-                      <div class="divline"></div>
-                      <li><a class="menu__item" href="/">Home</a></li>
-                      <li><a class="menu__item" href="/offene-bereiche">Offene Bereiche</a></li>
-                      <li><a class="menu__item" href="/funktion-eins">Leergut-Rechner</a></li>
-                      <li><a class="menu__item" href="/funktion-zwei">Klicker-App</a></li>
-                      <li><a class="menu__item" href="/funktion-drei">Lagen-Rechnung</a></li>
-                      <li><a class="menu__item" href="/hilfe">Hilfe/Über</a></li>
-                      <div class="divline"></div>
-                      <li><a class="menu__item_ann" style="display:block; margin: 0 auto; margin-top: 10px;" href="/blog">Es gibt Neuigkeiten! 📣</a></li>
-                    </ul>
-                  </div>
-
-            </div>
-            <div class="logo">
-                <h1>G</h1>
-            </div>
-        </div>
-    </nav>
-    <body>
-
-        <div class="ext_nav">
-
-        </div>
-
-        {% with messages = get_flashed_messages(with_categories=true) %} {% if
-        messages %} {% for category, message in messages %} {% if category ==
-        'error' %}
-        <div class="alert alert-danger alter-dismissable fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% else %}
-        <div class="alert alert-success alter-dismissable fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% endif %} {% endfor %} {% endif %} {% endwith %}
-
-        <div class="container">{% block content %} {% endblock %}</div>
-
-    </body>
-
+                        <h1 class="navtext"><a href="/">GoodDrinks</a></h1>
+                        <div class="divline"></div>
+                        <li><a class="menu__item" href="/">Home</a></li>
+                        <li><a class="menu__item" href="/offene-bereiche">Offene Bereiche</a></li>
+                        <li><a class="menu__item" href="/funktion-eins">Leergut-Rechner</a></li>
+                        <li><a class="menu__item" href="/funktion-zwei">Klicker-App</a></li>
+                        <li><a class="menu__item" href="/funktion-drei">Lagen-Rechnung</a></li>
+                        <li><a class="menu__item" href="/hilfe">Hilfe/Über</a></li>
+                        {% if current_user.user_state == "admin" %}
+                        <li><a class="menu__item" href="/admin">Admin-Page</a></li>
+                        {% endif %}
+                        {% if not current_user.is_authenticated %}
+                        <li><a class="menu__item" href="/login">Anmelden</a></li>
+                        {% else %}
+                        <li><a class="menu__item" href="/logout">Abmelden</a></li>
+                        {% endif %}
+                        <div class="divline"></div>
+                        <li><a class="menu__item_ann" style="display:block; margin: 0 auto; margin-top: 22px;" href="/blog">Es gibt Neuigkeiten! 📣</a></li>
+                      </ul>
+                    </div>
+  
+              </div>
+              <div class="logo">
+                  <h1>G</h1>
+              </div>
+          </div>
+      </nav>
+      <body>
+  
+          <div class="ext_nav">
+  
+          </div>
+  
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %} {% if category ==
+          'error' %}
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          {% endif %} {% endfor %} {% endif %} {% endwith %}
+  
+          <div class="container">{% block content %} {% endblock %}</div>
+  
+      </body>
+      <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+      ></script>
 </html>

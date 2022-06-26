@@ -131,6 +131,8 @@ nav {
     padding: 80px 0;
     list-style: none;
     background-color: #ffffff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 /* center */
@@ -187,9 +189,6 @@ nav {
         position: fixed;
     }
     .navtext {
-        display: none;
-    }
-    nav .divline {
         display: none;
     }
 }
@@ -782,12 +781,32 @@ dialog input {
 }
 
 
+.users {
+    margin: 10px;
+}
+.user {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 
+.user_info {
+    margin-bottom: 10px;
+}
 
-
-
-
-
+.edit_user {
+    display: block;
+    padding: 8px 16px;
+    font-size: 12px;
+    text-decoration: none;
+    transition-duration: .25s;
+    border-radius: 50px;
+    width: fit-content;
+    color: #b83c0c;
+    background-color: #ffd7bc;
+}
 
 
 .fk3-field {

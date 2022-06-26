@@ -1,45 +1,60 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- 
-import re
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
+from flask_login import current_user, login_required, login_user, logout_user
+from werkzeug.security import check_password_hash, generate_password_hash
+from .models import Note, User
+from . import user_db as database
 import json
 import random
-
 from website.db import db
 
 views = Blueprint('views', __name__)
+placeholder_sentence = ["Today I though about...", "It's important that...", "I want to remember...", "I think about...", "Today happened...", "WOW! Note this..."]
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Note.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            database.session.delete(note)
+            database.session.commit()
+    
+    return jsonify({})
 
 @views.route("/", methods=["GET"])
 def home():
-    return render_template("home.html")
+    return render_template("home.html", current_user=current_user)
 
 @views.route("/funktion-eins", methods=["GET","POST"])
 def funktion_one():
-    return render_template("funktion_one.html")
+    return render_template("funktion_one.html", current_user=current_user)
 
 @views.route("/funktion-zwei", methods=["GET","POST"])
 def funktion_two():
-    return render_template("funktion_two.html")
+    return render_template("funktion_two.html", current_user=current_user)
 
 @views.route("/funktion-drei", methods=["GET","POST"])
 def funktion_three():
-    return render_template("funktion_three.html")
+    return render_template("funktion_three.html", current_user=current_user)
 
 @views.route("/hilfe", methods=["GET"])
 def hilfe():
-    return render_template("help.html")
+    return render_template("help.html", current_user=current_user)
 
 @views.route("/impressum", methods=["GET"])
 def impressum():
-    return render_template("impressum.html")
+    return render_template("impressum.html", current_user=current_user)
 
 @views.route("/blog")
 def blog():
-    return render_template("blog.html")
+    result = Note.query.all()
+    print(result)
+    return render_template("blog.html", session = result, user = current_user, current_user=current_user)
 
 @views.route("/funktion-drei/help")
 def fk3_help():
-    return render_template("fk3help.html")
+    return render_template("fk3help.html", current_user=current_user)
 
 @views.route("/offene-bereiche", methods=["GET", "POST"])
 def offene_bereiche():
@@ -49,7 +64,7 @@ def offene_bereiche():
 
     print(bereiche)
 
-    return render_template("offene_bereiche.html", bereiche=bereiche, c_bereiche=c_bereiche)
+    return render_template("offene_bereiche.html", bereiche=bereiche, c_bereiche=c_bereiche, current_user=current_user)
 
 @views.route("/offene-bereiche/add", methods=["GET", "POST"])
 def add_entry():
@@ -60,11 +75,9 @@ def add_entry():
         bereich_nummer = requ["bereich_nummer"]
         bereich_name = requ["bereich_name"]
         pw = requ["sendMessage"]
-        if int(bereich_nummer) is None:
-            print("lmao")
+        if int(bereich_nummer) is None:   
             return
         if str(bereich_name) is None:
-            print("lmao")
             return
 
         if pw == "1234":
@@ -112,3 +125,51 @@ def resolve_bereich():
         db.commit()
 
     return "ok"
+
+@views.route("/admin", methods=["GET", "POST"])
+@login_required
+def admin_page():
+    result = User.query.all()
+    if request.method == 'POST':
+        print("postmethod active")
+        status = request.get_json()
+        note = status["note"]
+        title = status["title"]
+        status = status["status"]
+        print(note, title, status)
+        
+        if len(note) < 1:
+            flash('Note is too short.', category='error')
+        else:
+            new_note = Note(data=note, user_id=current_user.id, tag=status,title=title)
+            database.session.add(new_note)
+            database.session.commit()
+            flash('Note added!', category='success')
+    if current_user.user_state == "admin":      
+        return render_template("admin.html", user=current_user, users = result, current_user=current_user)
+    else: render_template("login.html")
+
+@views.route("/edit/<int:user_id>", methods=["GET", "POST"])
+@login_required
+def edit_user(user_id):
+    if request.method == 'POST':
+        print("lololol")
+        user = request.get_json()
+        type = user["type"]
+
+        user = User.query.filter_by(id=user_id).first()
+        if not user:
+            flash("Email already exists.", category='error')
+        # elif len(email) < 4:
+        #     flash('Email must be greater than 3 characters.', category='error')
+        # elif len(name) < 2:
+        #     flash('First name must be greater than 1 character.', category='error')
+        else:
+            # new_user = User(email=email, first_name=name)
+            database.engine.execute(f"UPDATE user SET user_state = ? WHERE user.id = ?", type, user_id)
+            database.session.commit()
+            return redirect(url_for("views.admin_page"))
+
+    if current_user.user_state == "admin": 
+        return render_template("edit_user.html", user_id=user_id, current_user=current_user)
+    else: render_template("login.html")

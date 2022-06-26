@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<form method="POST">
+    <h3 align="center">Sign Up</h3>
+    <div class="form-group">
+        <label for="email">New Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter email adress..."
+        />
+      </div>
+      <div class="form-group">
+        <label for="firstName">New First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          placeholder="Enter first name..."
+        />
+      </div>
+      <div class="form-group">
+          <SELECT name="status" id="status">
+            <option value="employee">Mitarbeiter</option>
+            <option value="admin">Administrator</option>
+        </SELECT>
+      </div>
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script>
+    document.getElementById('submit').addEventListener("click", (e) => {
+        e.preventDefault();
+        selectElement = document.getElementById("status");
+        output = selectElement.value;
+        fetch("/edit/{{ user_id }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({user_id: "{{ user_id }}", type: output})
+        })
+
+    })
+</script>
+{% endblock %}

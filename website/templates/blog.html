@@ -7,6 +7,31 @@
     Version: 1.0.3
     </p>
     <div class="blog">
+        <ul class="center">
+            {% for note in session %}
+            <div class="devlog">
+                <p class="{{ note.tag }}">
+                    {% if note.tag == "allgemein" %}
+                    Allgemein
+                    {% endif %}
+                    {% if note.tag == "neues" %}
+                    Neues
+                    {% endif %}
+                    {% if note.tag == "wgt" %}
+                    Wie geht das?
+                    {% endif %}
+                </p>
+                <h2 class="devlog_title">{{ note.title }}</h2>
+                <div class="divline"></div>
+                <p>{{ note.data }}</p>
+                <div class="divline"></div>
+                <p class="time">{{ note.date }}</p>
+                {% if user.first_name == "admin" %}
+                    <button type="button" class="close" onClick="deleteNote({{ note.id }})"><span aria-hidden="true">&times;</span></button>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </ul>
         <div class="devlog">
             <p class="allgemein">Allgemein | v.1.0.3</p>
             <h2 class="devlog_title">v. 1.0.3</h2>
