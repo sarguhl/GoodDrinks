@@ -30,6 +30,18 @@
             </div>
         </div>
     </form>
+    <div class="app_info">
+        <h2>App-Version</h2>
+        <div class="devlog_div">
+            <div>
+                <p>Version</p>
+                <textarea name="version", id="version", class="form-control"></textarea>
+            </div>
+            <div>
+                <button type="submit", id="apply_version", class="submit-button">Aktuallisieren</button>
+            </div>
+        </div>
+    </div>
     <div class="users">
         <h2>Mitarbeiter</h2>
         <div class="scroll">
@@ -45,7 +57,16 @@
                 <tr>
                     <td>{{ account.first_name }}</td>
                     <td>{{ account.email }}</td>
-                    <td>{{ account.user_state }}</td>
+
+                    <td>
+                        {% if account.user_state == "admin" %}
+                        <p class="admin">Administrator</p>
+                        {% endif %}
+                        {% if account.user_state == "employee" %}
+                        <p class="employee">Mitarbeiter</p>
+                        {% endif %}
+                    </td>
+             
                     <td>{{ account.id }}</td>
                     <td><p style="margin: 0 auto;"><a style="margin: 0 auto;" class="edit_user" href="/edit/{{ account.id }}">Bearbeiten</a></p></td>
                 </tr>
@@ -53,7 +74,7 @@
             </table>
         </div>
 
-        <a class="menu__item_ann" href="/sign-up">+ Neuen Mitarbeiter Hinzufügen</a>
+        <a class="menu__item_ann" href="/sign-up">+ Mitarbeiter Hinzufügen</a>
     </div>
 </div>
 <script>
@@ -70,6 +91,20 @@
                 "Accept": "application/json"
             },
             body: JSON.stringify({status: output, title: title, note: note})
+        })
+
+    })
+    document.getElementById('apply_version').addEventListener("click", (e) => {
+        e.preventDefault();
+        selectElement = document.getElementById("version");
+        output = selectElement.value;
+        fetch("/admin/updateappinfo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({id: output})
         })
 
     })

@@ -853,6 +853,11 @@ table td {
     padding: 10px;
 }
 
+table td p {
+    text-align: center;
+    margin: 0 auto;
+}
+
 table th {
     border: 1px solid;
     border-color: gray;
@@ -884,26 +889,36 @@ div.scroll {
   
     max-width: fit-content;
     width: 100%;
+    height: fit-content;
   
   
     text-align: left;
-    padding: 20px;
+    padding: 10px;
     border-radius: 12px;
     transition: all 0.2s ease;
 }
 
 .devlog_div div {
+    height: fit-content;
     margin: 10px;
     display: inline-block;
     vertical-align: middle;
     background: none;
-    padding: 10px;
 }
 
 .devlog_div p {
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     background: none;
+    margin-bottom: 0;
+}
+
+.admin {
+    color:#FF6600;
+}
+
+.employee {
+    color:#0077FF;
 }
 
 textarea {

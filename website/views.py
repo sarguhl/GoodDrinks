@@ -50,7 +50,8 @@ def impressum():
 def blog():
     result = Note.query.all()
     print(result)
-    return render_template("blog.html", session = result, user = current_user, current_user=current_user)
+    app_version = db.records("SELECT version FROM appinfo WHERE versionId = 1")
+    return render_template("blog.html", session = result, user = current_user, current_user=current_user, app_version = app_version[0][0])
 
 @views.route("/funktion-drei/help")
 def fk3_help():
@@ -149,6 +150,19 @@ def admin():
         return render_template("admin.html", user=current_user, users = result, current_user=current_user)
     else: render_template("login.html")
 
+@views.route("/admin/updateappinfo", methods=["POST"])
+def admin_updateappinfo():
+    if request.method == "POST":
+        version_request = request.get_json()
+        version = version_request["id"]
+        if len(version) <= 3:
+            flash("Version is too short!", category='error')
+        else:
+            db.execute("UPDATE appinfo SET version = %s WHERE versionId = 1", version)
+            db.commit()
+
+    return "ok"
+
 @views.route("/edit/<int:user_id>", methods=["GET", "POST"])
 @login_required
 def edit_user(user_id):
@@ -193,4 +207,6 @@ def delete_user(user_id):
                 return redirect(url_for("views.admin"))
         
     return "ok"
+
+
         
