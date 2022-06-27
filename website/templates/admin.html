@@ -1,47 +1,59 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Admin{% endblock %}
 {% block content %}
-<div class="home-wrapper">
-    <div class="menu">
-        <h1>Hallo, {{ user.first_name }}</h1>        
-        <form method="POST">
-            <h2 style="margin: 10px;">Devlog</h2>
-            <div class="neuer_bereich">
-                <div>            
-                    <p>Titel</p>
-                    <textarea name="title" id="title" class="form-control" placeholder="Titel..."></textarea>
-                </div>
-                <div>               
-                    <p>Devlog-Inhalt</p>
-                    <textarea name="note" id="note" class="form-control" placeholder="Text..."></textarea>
-                </div>
-                <div>
-                    <SELECT name="status" id="status">
-                        <option value="allgemein">Allgemein</option>
-                        <option value="neues">Neues</option>
-                        <option value="wgt">Wie geht das?</option>
-                    </SELECT>
-                </div>
-                <div>
-                    <button type="submit" id="submit" class="submit-button">Hinzufügen</button>    
-                </div>
+<div class="wrap">
+    <div style="margin-bottom: 20px; text-align: center;">
+        <h1 class="header">Admin-Page</h1>        
+        <p class="grey_text">Hallo, <b>{{ current_user.first_name }}</b></p>
+    </div>
+    <form method="POST">
+        <h2>Devlog</h2>
+        <div class="devlog_div">
+            <div>            
+                <p>Titel</p>
+                <textarea name="title" id="title" class="form-control" placeholder="Titel..."></textarea>
             </div>
-        </form>
-        <div class="users">
-            <h2>Mitarbeiter</h2>
-            {% for account in users %}
-            <div class="user">
-                <div class="user_info">
-                    <h3>Name: {{ account.first_name }}</h3>
-                    <p>Email: {{ account.email }}</p>
-                    <p>Typ: {{ account.user_state }}</p>
-                    <p class="user_id">ID: {{ account.id }}</p>
-                </div>
-                <a class="edit_user" href="/edit/{{ account.id }}">Bearbeiten</a>
+            <div>               
+                <p>Devlog-Inhalt</p>
+                <textarea name="note" id="note" class="form-control" placeholder="Text..."></textarea>
             </div>
-            {% endfor %}
-            <a class="menu__item_ann" href="/sign-up">+ Neuen Mitarbeiter Hinzufügen</a>
+            <div>
+                <p>Tag</p>
+                <SELECT name="status" id="status">
+                    <option value="allgemein">Allgemein</option>
+                    <option value="neues">Neues</option>
+                    <option value="wgt">Wie geht das?</option>
+                </SELECT>
+            </div>
+            <div>
+                <button type="submit" id="submit" class="submit-button">Hinzufügen</button>    
+            </div>
         </div>
+    </form>
+    <div class="users">
+        <h2>Mitarbeiter</h2>
+        <div class="scroll">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>E-Mail</th>
+                    <th>Typ</th>
+                    <th>ID</th>
+                    <th>Bearbeiten</th>
+                </tr>
+                {% for account in users %}
+                <tr>
+                    <td>{{ account.first_name }}</td>
+                    <td>{{ account.email }}</td>
+                    <td>{{ account.user_state }}</td>
+                    <td>{{ account.id }}</td>
+                    <td><p style="margin: 0 auto;"><a style="margin: 0 auto;" class="edit_user" href="/edit/{{ account.id }}">Bearbeiten</a></p></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <a class="menu__item_ann" href="/sign-up">+ Neuen Mitarbeiter Hinzufügen</a>
     </div>
 </div>
 <script>

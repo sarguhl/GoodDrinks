@@ -128,7 +128,7 @@ def resolve_bereich():
 
 @views.route("/admin", methods=["GET", "POST"])
 @login_required
-def admin_page():
+def admin():
     result = User.query.all()
     if request.method == 'POST':
         print("postmethod active")
@@ -152,6 +152,7 @@ def admin_page():
 @views.route("/edit/<int:user_id>", methods=["GET", "POST"])
 @login_required
 def edit_user(user_id):
+    user_name = User.query.filter_by(id=user_id).first()
     if request.method == 'POST':
         print("lololol")
         user = request.get_json()
@@ -168,8 +169,28 @@ def edit_user(user_id):
             # new_user = User(email=email, first_name=name)
             database.engine.execute(f"UPDATE user SET user_state = ? WHERE user.id = ?", type, user_id)
             database.session.commit()
-            return redirect(url_for("views.admin_page"))
+            return redirect(url_for("views.admin"))
 
     if current_user.user_state == "admin": 
-        return render_template("edit_user.html", user_id=user_id, current_user=current_user)
+        return render_template("edit_user.html", user_id=user_id, current_user=current_user, user=user_name)
     else: render_template("login.html")
+
+@views.route("/edit/<int:user_id>/delete", methods=["POST"])
+def delete_user(user_id):
+    if current_user.user_state != "admin":
+        return
+    else:
+        if request.method == "POST":
+            user = request.get_json()
+            userId = user["user_id"]
+
+            user_exists = User.query.filter_by(id=userId).first()
+            if not user:
+                flash("User doesn't exist!")
+            else:
+                database.engine.execute("DELETE FROM user WHERE user.id = ?", user_id)
+                database.session.commit()
+                return redirect(url_for("views.admin"))
+        
+    return "ok"
+        
