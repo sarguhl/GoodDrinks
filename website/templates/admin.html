@@ -6,39 +6,41 @@
         <h1 class="header">Admin-Page</h1>        
         <p class="grey_text">Hallo, <b>{{ current_user.first_name }}</b></p>
     </div>
-    <form method="POST">
-        <h2>Devlog</h2>
-        <div class="devlog_div">
-            <div>            
-                <p>Titel</p>
-                <textarea name="title" id="title" class="form-control" placeholder="Titel..."></textarea>
-            </div>
-            <div>               
-                <p>Devlog-Inhalt</p>
-                <textarea name="note" id="note" class="form-control" placeholder="Text..."></textarea>
-            </div>
-            <div>
-                <p>Tag</p>
-                <SELECT name="status" id="status">
-                    <option value="allgemein">Allgemein</option>
-                    <option value="neues">Neues</option>
-                    <option value="wgt">Wie geht das?</option>
-                </SELECT>
-            </div>
-            <div>
-                <button type="submit" id="submit" class="submit-button">Hinzufügen</button>    
+    <div class="updatepanel">
+        <div class="devlogwrap">
+            <h2>Devlog</h2>
+            <div class="devlog_div">
+                <div>            
+                    <p>Titel</p>
+                    <textarea name="title" id="title" class="form-control" placeholder="Titel..."></textarea>
+                </div>
+                <div>               
+                    <p>Devlog-Inhalt</p>
+                    <textarea name="note" id="note" class="form-control" placeholder="Text..."></textarea>
+                </div>
+                <div>
+                    <p>Tag</p>
+                    <SELECT name="status" id="status">
+                        <option value="allgemein">Allgemein</option>
+                        <option value="neues">Neues</option>
+                        <option value="wgt">Wie geht das?</option>
+                    </SELECT>
+                </div>
+                <div>
+                    <button type="submit" id="submit" class="submit-button">Hinzufügen</button>    
+                </div>
             </div>
         </div>
-    </form>
-    <div class="app_info">
-        <h2>App-Version</h2>
-        <div class="devlog_div">
-            <div>
-                <p>Version</p>
-                <textarea name="version", id="version", class="form-control"></textarea>
-            </div>
-            <div>
-                <button type="submit", id="apply_version", class="submit-button">Aktuallisieren</button>
+        <div class="devlogwrap">
+            <h2>App-Version</h2>
+            <div class="devlog_div">
+                <div>
+                    <p>Version</p>
+                    <textarea name="version", id="version", class="form-control"></textarea>
+                </div>
+                <div>
+                    <button type="submit", id="apply_version", class="submit-button">Aktuallisieren</button>
+                </div>
             </div>
         </div>
     </div>
@@ -48,7 +50,7 @@
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>E-Mail</th>
+                    <th>Mitarbeiter-Nummer</th>
                     <th>Typ</th>
                     <th>ID</th>
                     <th>Bearbeiten</th>

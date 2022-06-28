@@ -209,4 +209,7 @@ def delete_user(user_id):
     return "ok"
 
 
-        
+@views.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+       

@@ -22,14 +22,13 @@ main {
     margin: 5rem auto;
 }
 
-.home-wrapper h1 {
-    font-size: 43px;
-    margin-left: 15px;
+
+.users a {
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
 }
-
-
 
 
 
@@ -43,6 +42,64 @@ main {
     margin: 20px;
 }
 
+
+
+
+.error-alert {
+    display: block;
+
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    width: fit-content;
+    max-width: 100%;
+    height: fit-content;
+    color:white;
+    background-color: #c54f00;
+    border-radius: 5px;
+}
+
+.success-alert {
+    display: block;
+
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    width: fit-content;
+    max-width: 100%;
+    height: fit-content;
+    color:white;
+    background-color: #80c500;
+    border-radius: 5px;
+}
+
+.close {
+    margin: 20px;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border: 1px solid;
+    border-color: white;
+    border-radius: 50px;
+    background: none;
+    width: 20px;
+    height: 20px;
+
+}
+
+
+
+
+.devlogwrap {
+    display: inline-block;
+    vertical-align: top;
+    width: 500px;
+    max-width: 100%;
+    margin-right: 20px;
+    margin-top: 20px;
+}
 
 
 
@@ -67,9 +124,6 @@ nav {
     float: right;
 }
 
-.logo h1 {
-    font-size: 30px;
-}
 
 .nav_burger {
     margin-top: 5px;
@@ -378,12 +432,6 @@ display: inline-block;
     background-color: RoyalBlue;
 }
 
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 36px;
-    margin-bottom: 10px;
-
-}
 
 .header {
     margin: 0;
@@ -610,11 +658,7 @@ i {
     padding: 10px;
 }
 
-.angelegter_bereich p, h1, h2, h3 {
-    margin: 0 auto;
-    font-family: 'Montserrat', sans-serif;
-    background: none;
-}
+
 
 #cancel, #cancel2 {
     text-align: center;
@@ -727,11 +771,7 @@ dialog input {
     padding: 10px;
 }
 
-.gesch_bereich p, h1, h2, h3 {
-    margin: 0 auto;
-    font-family: 'Montserrat', sans-serif;
-    background: none;
-}
+
 .bereich_claim {
     display: inline-block;
     vertical-align: middle;
@@ -742,11 +782,6 @@ dialog input {
 .add_btns {
     margin-top: 10px;
 }
-
-
-
-
-
 
 .allgemein, .neues, .wgt {
     display: absolute;
@@ -795,22 +830,17 @@ dialog input {
 
 .app_info {
     color: gray;
-    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
+.app_info h2 {
+    color: black;
+}
 
 .users {
     margin-top: 10px;
     margin-bottom: 10px;
-}
-table {
-    overflow-x: auto;
-    width: 100%;
-    border: 1px solid;
-    border-color: gray;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 10px;
 }
 
 .form-group {
@@ -841,10 +871,20 @@ table {
     text-align: left;
 }
 
+table {
+    overflow-x: auto;
+    width: 100%;
+    border: 1px solid;
+    border-color: gray;
+    border-collapse: collapse;
+    background-color: white;
+}
+
 table tr {
     margin: 0 auto;
     padding: 10px;
 }
+
 table td {
     border: 1px solid;
     border-color: gray;
@@ -900,7 +940,7 @@ div.scroll {
 
 .devlog_div div {
     height: fit-content;
-    margin: 10px;
+    margin: 5px 10px;
     display: inline-block;
     vertical-align: middle;
     background: none;
@@ -967,8 +1007,6 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-
-
 
 .fk3-field {
     display: inline-block;
