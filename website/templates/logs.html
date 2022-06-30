@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+<div class="wrap">
+    <div style="margin-bottom: 20px; text-align: center;">
+        <h1 class="header">Log</h1>        
+    </div>
+    <div class="scroll">
+        <table>
+            <tr>
+                <th>Mitarbeiter</th>
+                <th>Aktion</th>
+                <th>Zeit</th>
+            </tr>
+            {% for log in logs[::-1] %}
+            <tr>
+                <td>{{ log[0] }}</td>
+                <td>{{ log[1] }}</td>
+                <td>{{ log[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div style="margin: 20px; text-align: center;">
+        <h1 class="header">Login-Aktivitäten</h1>        
+    </div>
+    <div class="scroll">
+        <table>
+            <tr>
+                <th>Mitarbeiter</th>
+                <th>Aktion</th>
+                <th>Zeit</th>
+            </tr>
+            {% for log in logins[::-1] %}
+            <tr>
+                <td>{{ log[0] }}</td>
+                <td>{{ log[1] }}</td>
+                <td>{{ log[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

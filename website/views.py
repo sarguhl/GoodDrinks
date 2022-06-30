@@ -6,9 +6,11 @@ from . import user_db as database
 import json
 import random
 from website.db import db
+from datetime import datetime
+
+now = datetime.now()
 
 views = Blueprint('views', __name__)
-placeholder_sentence = ["Today I though about...", "It's important that...", "I want to remember...", "I think about...", "Today happened...", "WOW! Note this..."]
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
@@ -24,6 +26,7 @@ def delete_note():
 
 @views.route("/", methods=["GET"])
 def home():
+    database.session.commit()
     return render_template("home.html", current_user=current_user)
 
 @views.route("/funktion-eins", methods=["GET","POST"])
@@ -147,7 +150,9 @@ def admin():
             database.session.commit()
             flash('Note added!', category='success')
     if current_user.user_state == "admin":      
-        return render_template("admin.html", user=current_user, users = result, current_user=current_user)
+        logs = db.records("SELECT employee, action, time FROM sarguhl_bereich.log")
+        logins = db.records("SELECT employee, action, time FROM sarguhl_bereich.login")
+        return render_template("admin.html", user=current_user, users = result, current_user=current_user, logs=logs, logins=logins)
     else: render_template("login.html")
 
 @views.route("/admin/updateappinfo", methods=["POST"])
@@ -195,6 +200,7 @@ def delete_user(user_id):
         return
     else:
         if request.method == "POST":
+
             user = request.get_json()
             userId = user["user_id"]
 
@@ -204,10 +210,21 @@ def delete_user(user_id):
             else:
                 database.engine.execute("DELETE FROM user WHERE user.id = ?", user_id)
                 database.session.commit()
+
+                current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+                db.execute("INSERT INTO sarguhl_bereich.log (employee, action, time) VALUES (%s, %s, %s)", f"{current_user.first_name} {current_user.id}", f"Deleted User {userId}", current_time)
+                db.commit()
                 return redirect(url_for("views.admin"))
         
     return "ok"
 
+@views.route("/admin/logs", methods=["POST", "GET"])
+def admin_log():
+    if current_user.user_state == "admin":
+        logs = db.records("SELECT employee, action, time FROM sarguhl_bereich.log")
+        logins = db.records("SELECT employee, action, time FROM sarguhl_bereich.login")
+        return render_template("logs.html", logs=logs, logins=logins)
+    else: render_template("home.html")
 
 @views.errorhandler(500)
 def internal_server_error(e):
